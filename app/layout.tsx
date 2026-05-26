@@ -15,7 +15,7 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yoelnegasi.dev"),
+  metadataBase: new URL("https://yoel-negasi.vercel.app"),
   title: "Yoel Negasi — Senior Full Stack Engineer",
   description:
     "Senior Full Stack Engineer specializing in React, Next.js, Node.js, platform engineering, enterprise automation, and AI-integrated systems. Based in Oakland, CA.",
