@@ -1,0 +1,43 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Next.js build output
+.next/
+out/
+dist/
+build/
+
+# TypeScript
+*.tsbuildinfo
+
+# VS Code
+.vscode/
+.history/
+
+# macOS
+.DS_Store
+
+# Env files
+.env
+.env.*.local
+.env.local
+
+# Logs
+logs/
+*.log
+
+# Coverage and test output
+coverage/
+
+# Misc
+.idea/
+*.swp
+
+# Public generated files
+public/.cache/
+
+# Generated PDFs
+*.pdf
