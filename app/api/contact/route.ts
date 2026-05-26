@@ -28,21 +28,35 @@ export async function POST(req: NextRequest) {
 
     const { name, email, message } = body;
 
-    // TODO: Replace this with Resend when ready to go live
-    // import { Resend } from "resend";
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: "portfolio@yourdomain.com",
-    //   to: "yoel@youremail.com",
-    //   subject: `Portfolio contact from ${name}`,
-    //   text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-    // });
+    const w3fRes = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: process.env.WEB3FORMS_KEY,
+        name,
+        email,
+        message,
+        subject: `Portfolio contact from ${name}`,
+      }),
+    });
 
-    // Mock: log to console for now
-    console.log("[Contact Form]", { name, email, message: message.slice(0, 50) });
+    const responseText = await w3fRes.text();
+    let w3fData: { success?: boolean; message?: string };
+    try {
+      w3fData = JSON.parse(responseText);
+    } catch {
+      console.error("[Contact Form] Web3Forms non-JSON response:", responseText.slice(0, 200));
+      return NextResponse.json({ error: "Failed to send message" }, { status: 502 });
+    }
+
+    if (!w3fData.success) {
+      console.error("[Contact Form] Web3Forms error:", w3fData);
+      return NextResponse.json({ error: "Failed to send message" }, { status: 502 });
+    }
 
     return NextResponse.json({ success: true }, { status: 200 });
-  } catch {
+  } catch (err) {
+    console.error("[Contact Form] Caught error:", err);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
