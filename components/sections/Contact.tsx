@@ -47,12 +47,19 @@ export default function Contact() {
     if (!validate()) return;
     setStatus("loading");
     try {
-      const res = await fetch("/api/contact", {
+      const formData = new FormData();
+      formData.append("access_key", "adac0d99-a1c5-4665-8f9f-65fca00f10a9");
+      formData.append("name", form.name);
+      formData.append("email", form.email);
+      formData.append("message", form.message);
+      formData.append("subject", `Portfolio contact from ${form.name}`);
+
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: formData,
       });
-      if (!res.ok) throw new Error("Failed");
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message ?? "Failed");
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
     } catch {
