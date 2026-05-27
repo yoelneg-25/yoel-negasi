@@ -7,11 +7,11 @@ import { GithubIcon, LinkedinIcon, TwitterXIcon } from "@/components/SocialIcons
 import { siteConfig } from "@/lib/data";
 
 const TYPEWRITER_STRINGS = [
-  "Senior Full Stack Engineer",
+  "Senior Full Stack & Platform Engineer",
   "Platform & Automation Engineer",
-  "React & Node.js Architect",
-  "GitHub Copilot Power User",
-  "AI-Augmented Engineering",
+  "CI/CD & Developer Tooling",
+  "AI-Enabled Workflow Engineering",
+  "Cloud Infrastructure & Systems",
 ];
 
 function useTypewriter(strings: string[], speed = 80, pause = 2000) {
@@ -103,9 +103,7 @@ export default function Hero() {
           variants={item}
           className="max-w-2xl mx-auto text-base sm:text-lg text-white/50 leading-relaxed mb-10"
         >
-          Senior Full Stack Engineer building enterprise platforms, React architectures, and
-          CI/CD systems — and using GitHub Copilot, Claude, and the OpenAI API to make
-          engineering teams faster. Based in Oakland.
+          {siteConfig.bio}
         </motion.p>
 
         {/* CTAs */}
