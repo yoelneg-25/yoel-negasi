@@ -47,7 +47,12 @@ function ExperienceItem({ job, index }: { job: Job; index: number }) {
             </h3>
             <p className="text-violet-400 text-sm font-medium mt-0.5">{job.company}</p>
           </div>
-          <span className="text-xs text-white/30 font-mono shrink-0">{job.period}</span>
+          <div className="flex flex-col items-start sm:items-end gap-0.5 shrink-0">
+            <span className="text-xs text-white/30 font-mono">{job.period}</span>
+            {"location" in job && job.location && (
+              <span className="text-xs text-white/20">{job.location as string}</span>
+            )}
+          </div>
         </div>
         <p className="text-white/50 text-sm leading-relaxed mb-4">{job.description}</p>
         <div className="flex flex-wrap gap-1.5">
@@ -90,7 +95,7 @@ export default function Experience() {
             Career timeline.
           </motion.h2>
           <motion.p variants={fadeUp} className="text-white/40 text-base max-w-lg">
-            5+ years building production systems across enterprise organizations.
+            8+ years building production systems across enterprise organizations.
           </motion.p>
         </motion.div>
 
