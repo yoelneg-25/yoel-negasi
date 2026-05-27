@@ -15,6 +15,7 @@ const colorMap: Record<string, string> = {
   orange: "from-orange-600/20 via-orange-600/5 to-transparent",
   emerald: "from-emerald-600/20 via-emerald-600/5 to-transparent",
   teal: "from-teal-600/20 via-teal-600/5 to-transparent",
+  amber: "from-amber-600/20 via-amber-600/5 to-transparent",
 };
 
 const accentMap: Record<string, string> = {
@@ -26,6 +27,7 @@ const accentMap: Record<string, string> = {
   orange: "text-orange-400",
   emerald: "text-emerald-400",
   teal: "text-teal-400",
+  amber: "text-amber-400",
 };
 
 const borderMap: Record<string, string> = {
@@ -37,6 +39,7 @@ const borderMap: Record<string, string> = {
   orange: "border-orange-500/30",
   emerald: "border-emerald-500/30",
   teal: "border-teal-500/30",
+  amber: "border-amber-500/30",
 };
 
 const bgMap: Record<string, string> = {
@@ -48,6 +51,7 @@ const bgMap: Record<string, string> = {
   orange: "bg-orange-500/10",
   emerald: "bg-emerald-500/10",
   teal: "bg-teal-500/10",
+  amber: "bg-amber-500/10",
 };
 
 const tagBgMap: Record<string, string> = {
@@ -59,6 +63,7 @@ const tagBgMap: Record<string, string> = {
   orange: "bg-orange-500/15 text-orange-300 border-orange-500/20",
   emerald: "bg-emerald-500/15 text-emerald-300 border-emerald-500/20",
   teal: "bg-teal-500/15 text-teal-300 border-teal-500/20",
+  amber: "bg-amber-500/15 text-amber-300 border-amber-500/20",
 };
 
 type ArchitectureStep = { step: string; desc: string };

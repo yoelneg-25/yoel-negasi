@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Monitor, Server, Cloud, Brain, Workflow } from "lucide-react";
+import { Monitor, Server, Cloud, Brain, Workflow, Database } from "lucide-react";
 import { skills } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,7 @@ const iconMap: Record<string, React.ElementType> = {
   Cloud,
   Brain,
   Workflow,
+  Database,
 };
 
 const fadeUp = {

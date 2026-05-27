@@ -22,6 +22,7 @@ const colorMap: Record<string, string> = {
   orange: "from-orange-600/20 to-orange-900/5 border-orange-500/20",
   emerald: "from-emerald-600/20 to-emerald-900/5 border-emerald-500/20",
   teal: "from-teal-600/20 to-teal-900/5 border-teal-500/20",
+  amber: "from-amber-600/20 to-amber-900/5 border-amber-500/20",
 };
 
 const accentMap: Record<string, string> = {
@@ -33,6 +34,7 @@ const accentMap: Record<string, string> = {
   orange: "text-orange-400 bg-orange-500/10",
   emerald: "text-emerald-400 bg-emerald-500/10",
   teal: "text-teal-400 bg-teal-500/10",
+  amber: "text-amber-400 bg-amber-500/10",
 };
 
 const tagBgMap: Record<string, string> = {
@@ -44,6 +46,7 @@ const tagBgMap: Record<string, string> = {
   orange: "bg-orange-500/10 text-orange-300 border-orange-500/20",
   emerald: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
   teal: "bg-teal-500/10 text-teal-300 border-teal-500/20",
+  amber: "bg-amber-500/10 text-amber-300 border-amber-500/20",
 };
 
 function ProjectCard({
@@ -90,12 +93,19 @@ function ProjectCard({
               </span>
             ))}
           </div>
-          <motion.div
-            className="opacity-0 group-hover:opacity-100 transition-opacity"
-            whileHover={{ rotate: 45 }}
-          >
-            <ArrowUpRight size={18} className="text-white/40" />
-          </motion.div>
+          <div className="flex items-center gap-2">
+            {"status" in project && project.status && (
+              <span className="text-[9px] px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.08] text-white/30 font-medium whitespace-nowrap">
+                {project.status as string}
+              </span>
+            )}
+            <motion.div
+              className="opacity-0 group-hover:opacity-100 transition-opacity"
+              whileHover={{ rotate: 45 }}
+            >
+              <ArrowUpRight size={18} className="text-white/40" />
+            </motion.div>
+          </div>
         </div>
 
         {/* Name */}

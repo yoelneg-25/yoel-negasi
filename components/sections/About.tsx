@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code2, Layers, Zap, Brain } from "lucide-react";
 import { siteConfig } from "@/lib/data";
 
 const fadeUp = {
@@ -20,27 +19,16 @@ const stagger = {
   show: { transition: { staggerChildren: 0.12 } },
 };
 
-const pillars = [
-  {
-    icon: Layers,
-    title: "Full Stack Architecture",
-    body: "Designing scalable systems end-to-end — from React component hierarchies to distributed Node.js backends, API design, and cloud infrastructure.",
-  },
-  {
-    icon: Zap,
-    title: "Platform & Automation",
-    body: "Building the internal platforms and automation pipelines that multiply engineering team velocity — CI/CD standardization, workflow engines, and developer tooling.",
-  },
-  {
-    icon: Code2,
-    title: "Enterprise Engineering",
-    body: "Navigating the complexity of large organizations — legacy modernization, compliance requirements, multi-team coordination, and production reliability at scale.",
-  },
-  {
-    icon: Brain,
-    title: "AI-Enhanced Engineering",
-    body: "Embedding AI tools — GitHub Copilot, Claude, and the OpenAI API — directly into engineering workflows to accelerate delivery, improve code quality, and build smarter internal tooling. Not ML, just practical AI applied where it actually helps.",
-  },
+const focusAreas = [
+  "Full Stack Architecture",
+  "Platform Engineering",
+  "Workflow Automation",
+  "CI/CD Systems",
+  "AI-Assisted Engineering",
+  "Cloud Infrastructure",
+  "Enterprise Tooling",
+  "Developer Experience",
+  "Scalable Systems",
 ];
 
 export default function About() {
@@ -83,33 +71,26 @@ export default function About() {
               variants={fadeUp}
               className="text-white/40 text-sm leading-relaxed"
             >
-              When I&apos;m not building production systems, I&apos;m exploring how AI tools like
-              GitHub Copilot and Claude can be wired into real engineering workflows in ways that
-              are genuinely useful — faster reviews, smarter automation, better internal tooling —
-              without losing the craft of engineering.
+              Outside of engineering work, I focus on how AI tools like GitHub Copilot and Claude
+              can be integrated into real workflows in ways that are practical — faster reviews,
+              smarter automation, better internal tooling — without losing the craft of engineering.
             </motion.p>
           </div>
 
-          {/* Right — pillar cards */}
-          <motion.div
-            variants={stagger}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-          >
-            {pillars.map((p) => (
-              <motion.div
-                key={p.title}
+          {/* Right — focus area badges */}
+          <motion.div variants={stagger} className="flex flex-wrap gap-2.5">
+            {focusAreas.map((area, i) => (
+              <motion.span
+                key={area}
                 variants={fadeUp}
-                className="glass rounded-2xl p-5 hover:border-violet-500/20 transition-all duration-300 group"
-                whileHover={{ y: -3 }}
+                custom={i}
+                whileHover={{ scale: 1.04, y: -2 }}
+                transition={{ duration: 0.18 }}
+                className="inline-flex items-center px-4 py-2 rounded-full glass border border-violet-500/15 text-sm text-white/70 font-medium hover:border-violet-500/40 hover:text-white hover:bg-violet-500/[0.08] transition-all duration-200 cursor-default"
               >
-                <div className="w-9 h-9 rounded-xl bg-violet-500/10 flex items-center justify-center mb-4 group-hover:bg-violet-500/20 transition-colors">
-                  <p.icon size={17} className="text-violet-400" />
-                </div>
-                <h3 className="font-display font-semibold text-sm text-white mb-2">
-                  {p.title}
-                </h3>
-                <p className="text-xs text-white/40 leading-relaxed">{p.body}</p>
-              </motion.div>
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-400/60 mr-2 shrink-0" />
+                {area}
+              </motion.span>
             ))}
           </motion.div>
         </motion.div>
